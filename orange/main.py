@@ -17,7 +17,7 @@ async def create_lcd(bus: int):
         try:
             return LCD(address=0x27, bus=bus, width=16, rows=2, backlight=True)
         except OSError as e:
-            if e.errno == errno.EIO:
+            if e.errno == errno.EIO or e.errno == errno.ENXIO or e.errno == errno.ENODEV:
                 await asyncio.sleep(10)
             else:
                 raise
