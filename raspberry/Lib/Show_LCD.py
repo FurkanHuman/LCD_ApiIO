@@ -7,6 +7,13 @@ class Show_LCD:
         self.info = Get_Info()
 
     async def c1(self, lcd, interface_wired: str, interface_wireless: str):
+
+        lcd.text("Bilgisayar adı:", 1)
+        await asyncio.sleep(3)
+
+        lcd.text(f"{await self.info.get_hostname()}", 1)
+        await asyncio.sleep(5)
+
         lcd.text("Kablolu Ip:", 1)
         await asyncio.sleep(3)
 

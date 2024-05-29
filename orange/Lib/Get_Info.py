@@ -18,6 +18,11 @@ class Get_Info:
         else:
             return "Bağlı Değil"
 
+    async def get_hostname(self):
+        result = subprocess.run(['ifconfig'], stdout=subprocess.PIPE)
+        output: str = result.stdout.decode('utf-8')
+        return output
+
     async def get_cpu_temperature(self):
         result = subprocess.run(['cputemp'], capture_output=True, text=True)
         output = result.stdout.strip()
