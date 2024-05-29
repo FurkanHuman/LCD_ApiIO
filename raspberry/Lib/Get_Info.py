@@ -19,7 +19,7 @@ class Get_Info:
             return "Bağlı Değil"
 
     async def get_hostname(self):
-        result = subprocess.run(['ifconfig'], stdout=subprocess.PIPE)
+        result = subprocess.run(['hostname'], stdout=subprocess.PIPE)
         output: str = result.stdout.decode('utf-8')
         return output
 
